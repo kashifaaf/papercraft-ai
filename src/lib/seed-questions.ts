@@ -80,14 +80,7 @@ const sampleQuestions: SeedQuestion[] = [
 export async function seedQuestions() {
   try {
     // Add more questions to reach 100+ per subject
-    const expandedQuestions: Array<{
-      subject: string;
-      questionText: string;
-      questionType: 'MCQ' | 'short';
-      options?: string[];
-      correctAnswer: string;
-      explanation: string;
-    }> = [];
+    const expandedQuestions: SeedQuestion[] = [];
     
     for (let i = 0; i < 15; i++) {
       sampleQuestions.forEach(q => {
