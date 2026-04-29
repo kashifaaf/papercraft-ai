@@ -1,7 +1,16 @@
 import { db } from '@/db';
 import { questions } from '@/db/schema';
 
-const sampleQuestions = [
+interface SeedQuestion {
+  subject: string;
+  questionText: string;
+  questionType: 'MCQ' | 'short';
+  options?: string[];
+  correctAnswer: string;
+  explanation: string;
+}
+
+const sampleQuestions: SeedQuestion[] = [
   // Physics Questions
   {
     subject: 'Physics',
@@ -71,7 +80,14 @@ const sampleQuestions = [
 export async function seedQuestions() {
   try {
     // Add more questions to reach 100+ per subject
-    const expandedQuestions = [];
+    const expandedQuestions: Array<{
+      subject: string;
+      questionText: string;
+      questionType: 'MCQ' | 'short';
+      options?: string[];
+      correctAnswer: string;
+      explanation: string;
+    }> = [];
     
     for (let i = 0; i < 15; i++) {
       sampleQuestions.forEach(q => {
